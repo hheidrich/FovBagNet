@@ -1,0 +1,43 @@
+accelerator: 'auto'
+devices: 'auto'
+max_epochs: 100
+seed: null
+training:
+  out_dir: './out/experiments/multiscale_4_levels/nonlinear_aggregation/deep_aggregation_sigma_1/bagnet_26/bagnet_26_9'
+  logfile: 'log.txt'
+  criterion: 'CCE'
+  precision: '16-mixed'
+  checkpoints:
+    save_top_k: 3
+    monitor: 'val loss'
+    mode: 'min'
+    filename: '{epoch}'
+data:
+  batch_size: 32
+  num_workers: 8
+  image_resolution: 224
+optimizer:
+  name: 'SGD'
+  kwargs:
+    lr: 1.0e-1
+    weight_decay: 1.0e-4
+    momentum: 0.9
+  gradient_clip_val: 1.0
+scheduler:
+  num_warmup_epochs: 0
+  name: 'CosineAnnealing'
+  kwargs:
+    T_max: 100
+    eta_min: 0.0
+model:
+  name: 'multiscale_dilation_model'
+  kwargs:
+    levels_to_evaluate: 4
+    sigma: 1.
+    patch_size: 9
+    stride: 8
+    num_network_layers: 26
+    share_params_across_scales: False
+    num_level_aggregation_blocks: 8
+metrics: ['Accuracy', 'Mean IoU']
+num_classes: 1000

@@ -1,0 +1,1 @@
+"""BagNet classifier package."""
