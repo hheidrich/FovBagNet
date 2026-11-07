@@ -1,16 +1,19 @@
-# NeurIPS 2026: Code Artifacts
+# Foveated BagNet: Inherent Interpretability Does Not Exclude Global Context
+
 This repository implements Foveated BagNets and provides tools for their training and evaluation.
+
+![Method overview](assets/overview.png)
 
 ## Installation
 
-We recommend using a virtual environment (conda / venv / uv):
+Requires Python >= 3.14 (see `pyproject.toml`).
+
+We use `uv` for setting up the environment, since the included `uv.lock` file pins exact
+package versions and guarantees a reproducible install:
 
 ```bash
-conda create -n fovbagnet_env python=3.13 -y
-conda activate fovbagnet_env
-
-# Install the package and all dependencies in editable mode
-pip install -e .
+# Install uv if you don't already have it: https://docs.astral.sh/uv/getting-started/installation/
+uv sync
 ```
 
 ## Training
@@ -85,4 +88,4 @@ path/to/bbox/annotations
 ```
 
 ## License
-This repository is licensed under the MIT License &mdash; see the [LICENSE](LICENSE) file for details.
+This repository is licensed under the MIT License; see the [LICENSE](LICENSE) file for details.
